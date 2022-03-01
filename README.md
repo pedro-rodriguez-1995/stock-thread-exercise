@@ -8,12 +8,12 @@
 <h3 align="center">stock-thread-exercise</h3>
   <p align="center">
     <br />
-    <a href="https://github.com/pedro-rodriguez-1995/stock-thread-exercise"><strong>Explore the docs 禄</strong></a>
+    <a href="https://github.com/pedro-rodriguez-1995/stock-thread-exercise"><strong>Explore the docs</strong></a>
     <br />
     <br />
-    路
+    脗路
     <a href="https://github.com/pedro-rodriguez-1995/stock-thread-exercise/issues">Report Bug</a>
-    路
+    脗路
     <a href="https://github.com/pedro-rodriguez-1995stock-thread-exercise/iseissues">Request Feature</a>
   </p>
 </div>
@@ -88,7 +88,7 @@ java -j stock-thread-exercise-jar-with-dependencies.jar
 <!-- CONTACT -->
 ## Contact
 
-Pedro Rodr韌uez Jim閚ez - rodriguezjimenez1995@gmail.com
+Pedro Rodr铆guez Jim茅nez - rodriguezjimenez1995@gmail.com
 
 
 Project Link: https://github.com/pedro-rodriguez-stock-thread-exercise
