@@ -11,9 +11,7 @@
     <a href="https://github.com/pedro-rodriguez-1995/stock-thread-exercise"><strong>Explore the docs</strong></a>
     <br />
     <br />
-    Â·
-    <a href="https://github.com/pedro-rodriguez-1995/stock-thread-exercise/issues">Report Bug</a>
-    Â·
+    <a href="https://github.com/pedro-rodriguez-1995/stock-thread-exercise/issues">Report Bug</a> -
     <a href="https://github.com/pedro-rodriguez-1995stock-thread-exercise/iseissues">Request Feature</a>
   </p>
 </div>
