@@ -15,18 +15,19 @@ import com.sinensia.classes.Stock;
 import com.sinensia.logic.StockChecker;
 
 public class Principal {
-	private static final int numThreads = 7;
+	
 
 	public static void main(String[] args) {
-		ExecutorService executor = Executors.newFixedThreadPool(numThreads);
+		
 
 		try (InputStreamReader input = new InputStreamReader(
 				Principal.class.getClass().getResourceAsStream("/config.properties"))) {
 
 			Properties properties = new Properties();
 			properties.load(input);
-
+			
 			Set<String> keys = properties.stringPropertyNames();
+			ExecutorService executor = Executors.newFixedThreadPool(keys.size());
 			List<Stock> stocks = new ArrayList<Stock>();
 			for (String key : keys) {
 
