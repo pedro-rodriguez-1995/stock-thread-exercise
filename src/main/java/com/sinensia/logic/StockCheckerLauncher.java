@@ -11,40 +11,48 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
 import com.sinensia.classes.Stock;
 import com.sinensia.principal.Principal;
 
+@EnableScheduling
+@Component
 public class StockCheckerLauncher {
-public static void launch() throws IOException, InterruptedException, ExecutionException{
-	
-	try (InputStreamReader input = new InputStreamReader(
-			Principal.class.getClass().getResourceAsStream("/config.properties"))) {
 
-		Properties properties = new Properties();
-		properties.load(input);
-		
-		Set<String> keys = properties.stringPropertyNames();
-		ExecutorService executor = Executors.newFixedThreadPool(keys.size());
-		List<Stock> stocks = new ArrayList<Stock>();
-		for (String key : keys) {
+	@Scheduled(fixedRate = 5000)
+	public void launch() throws IOException, InterruptedException, ExecutionException {
 
-			String[] values = properties.getProperty(key).split(",");
-			Future<Stock> stock = executor.submit(new StockChecker(values[1], values[0]));
+		try (InputStreamReader input = new InputStreamReader(
+				Principal.class.getClass().getResourceAsStream("/config.properties"))) {
 
-			stocks.add(stock.get());
+			Properties properties = new Properties();
+			properties.load(input);
+
+			Set<String> keys = properties.stringPropertyNames();
+			ExecutorService executor = Executors.newFixedThreadPool(keys.size());
+			List<Stock> stocks = new ArrayList<Stock>();
+			for (String key : keys) {
+
+				String[] values = properties.getProperty(key).split(",");
+				Future<Stock> stock = executor.submit(new StockChecker(values[1], values[0]));
+
+				stocks.add(stock.get());
+
+			}
+
+			stocks.forEach(stock -> System.out.println(stock.toString()));
+
+		} catch (IOException e) {
+			System.out.println("error1");
+			throw e;
+
+		} catch (InterruptedException | ExecutionException e) {
+			System.out.println("error2");
+			throw e;
 
 		}
-
-		stocks.forEach(stock -> System.out.println(stock.toString()));
-
-	} catch (IOException e) {
-
-		throw e;
-
-	} catch (InterruptedException | ExecutionException e) {
-
-		throw e;
-
 	}
-}
 }
